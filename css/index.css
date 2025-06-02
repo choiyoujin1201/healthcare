@@ -66,14 +66,16 @@ html, body{
 }
 
 .intro.out{
-    animation: out 0.5s forward;
+    animation: slide-out 0.5s forward;
 }
 
-@keyframes out{
+@keyframes slide-out{
     0%{
+        left: 0;
         opacity: 1;
     }
     100%{
+        left: -100%;
         opacity: 0;
     }
 }
