@@ -1,0 +1,186 @@
+<html lang = "ko">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href = "/css/index.css">
+        <script src = "/js/jquery-3.7.1.min.js"></script>
+    </head>
+
+    <body>
+        <div class = "Wrapper">
+            <div class = "top">
+                <div class = "title">
+                    <span>+ 캡스톤 디자인</span>
+                </div>
+
+                <div class = "clock">
+                    <span></span>
+                </div>
+            </div>
+
+            <div class = "data">
+                <div class = "my">
+                    <div class = "user_img_bg">
+                        <div class = "user_img">
+                        </div>
+                    </div>
+
+                    <div class = "greet">
+                        <div class = "name">
+                            <span>이두현</span>
+                        </div>
+
+                        <div class = "ment">
+                            <span>님, 안녕하세요!</span>
+                        </div>
+                    </div>
+
+                    <div class = "patient_info">
+                        <div class = "info_label">
+                            <div><span>ID</span></div>
+                            <div><span>Birth</span></div>
+                            <div><span>Room</span></div>
+                        </div>
+
+                        <div class = "separator">
+                            <div><span>|</span></div>
+                            <div><span>|</span></div>
+                            <div><span>|</span></div>
+                        </div>
+
+                        <div class = "info_value">
+                            <div><span>0001084</span></div>
+                            <div><span>2002.10.01</span></div>
+                            <div><span>B301</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "function">
+                    <div class = "temper">
+                        <div class = "function_title">
+                            <span>체온</span>
+                        </div>
+
+                        <div class = "function_data">
+                            <div class = "normal">
+                                <div class = "function_label">
+                                    <span>정상 범위 (±1°C)</span>
+                                </div>
+
+                                <div class = "function_value">
+                                    <span>36.5°C</span>
+                                </div>
+                            </div>
+
+                            <div class = "current">
+                                <div class = "function_label" id = "measure_temper" onClick = "getMeasurement('temper')">
+                                    <span>측정 결과 (재측정)</span>
+                                </div>
+
+                                <div class = "function_value" id = "temper_value">
+                                    <div class = "loading" style = "display: none;">
+                                        <img src = "/img/loading.gif">
+                                    </div>
+                                    
+                                    <span id = "temper_value_span">36.5°C</span>
+                                </div>
+                            </div>
+
+                            <div class = "status">
+                                <div class = "function_label">
+                                    <span>현재 상태</span>
+                                </div>
+
+                                <div class = "function_value">
+                                    <span>정상</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = "oxygen">
+                        <div class = "function_title">
+                            <span>산소포화도</span>
+                        </div>
+
+                        <div class = "function_data">
+                            <div class = "normal">
+                                <div class = "function_label">
+                                    <span>정상 범위 (±1%)</span>
+                                </div>
+
+                                <div class = "function_value">
+                                    <span>96%</span>
+                                </div>
+                            </div>
+
+                            <div class = "current">
+                                <div class = "function_label" id = "measure_oxygen" onClick = "getMeasurement('oxygen')">
+                                    <span>측정 결과 (재측정)</span>
+                                </div>
+
+                                <div class = "function_value" id = "oxygen_value">
+                                    <div class = "loading" style = "display: none;">
+                                        <img src = "/img/loading.gif">
+                                    </div>
+
+                                    <span id = "oxygen_value_span">95%</span>
+                                </div>
+                            </div>
+
+                            <div class = "status">
+                                <div class = "function_label">
+                                    <span>현재 상태</span>
+                                </div>
+
+                                <div class = "function_value">
+                                    <span>정상</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            function updateClock(){
+                const now = new Date();
+                const formats = { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false };
+                const datetime = now.toLocaleString("ko-KR", formats);
+
+                $(".clock span").text(datetime);
+            }
+
+            function getMeasurement(type){
+                if(type == "temper"){
+                    $("#temper_value_span").text("");
+                    $("#temper_value div").css("display", "flex");
+                
+                    temper = Math.random() * (37.5 - 35.5) + 35.5;
+                    temper = temper.toFixed(1);
+
+                    setTimeout(function() {
+                        $("#temper_value div").css("display", "none");
+                        $("#temper_value_span").text(temper + "°C");
+                    }, 1000);
+                }else if(type == "oxygen"){
+                    $("#oxygen_value_span").text("");
+                    $("#oxygen_value div").css("display", "flex");
+                
+                    oxygen = Math.floor(Math.random() * (97 - 95 + 1)) + 95;
+
+                    setTimeout(function() {
+                        $("#oxygen_value div").css("display", "none");
+                        $("#oxygen_value_span").text(oxygen + "%");
+                    }, 1000);
+                }else{
+                    return;
+                }
+            }
+
+            setInterval(updateClock, 1000);
+        </script>
+    </body>
+</html>
