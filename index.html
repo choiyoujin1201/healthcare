@@ -7,6 +7,10 @@
     </head>
 
     <body>
+        <div class = "intro">
+            <span>+ 캡스톤 디자인</span>
+        </div>
+
         <div class = "Wrapper">
             <div class = "top">
                 <div class = "title">
@@ -65,7 +69,7 @@
                         <div class = "function_data">
                             <div class = "normal">
                                 <div class = "function_label">
-                                    <span>정상 범위 (±1°C)</span>
+                                    <span>정상 범위 (±0.1°C)</span>
                                 </div>
 
                                 <div class = "function_value">
@@ -145,6 +149,12 @@
         </div>
         
         <script>
+            $(document).ready(function() {
+                setTimeout(function() {
+                    $(".intro").addClass("out");
+                })
+            }, 1000);
+
             function updateClock(){
                 const now = new Date();
                 const formats = { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false };
@@ -158,7 +168,7 @@
                     $("#temper_value_span").text("");
                     $("#temper_value div").css("display", "flex");
                 
-                    temper = Math.random() * (37.5 - 35.5) + 35.5;
+                    temper = Math.random() * (36.4 - 36.6) + 36.4;
                     temper = temper.toFixed(1);
 
                     setTimeout(function() {
