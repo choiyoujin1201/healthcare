@@ -1,16 +1,16 @@
 @font-face {
     font-family: "soyo";
-    src: url("/font/SOYOMapleRegular.ttf") format("truetype");
+    src: url("../font/SOYOMapleRegular.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "alim";
-    src: url("/font/HakgyoansimAllimjang.ttf") format("truetype");
+    src: url("../font/HakgyoansimAllimjang.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "SCDream";
-    src: url("/font/SCDream9.otf") format("opentype");
+    src: url("../font/SCDream9.otf") format("opentype");
 }
 
 *{
@@ -120,7 +120,7 @@ html, body{
 
     border-radius: 50%;
 
-    background-image: url("/img/user.jpg");
+    background-image: url("../img/user.jpg");
     background-size: cover;
 }
 
